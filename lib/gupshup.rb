@@ -62,7 +62,7 @@ module Gupshup
       msg_type = opts[:msg_type] || 'TEXT'
       
       return false, 'Phone Number is too short' if number.to_s.length < 12
-      return false, 'Phone Number should be numerical value' unless number.to_i.to_s == number.to_s
+      return false, 'Phone Number should be numerical value' if number.to_i == 0 
       return false, 'Message should be less than 725 characters long' if msg.to_s.length > 724
       call_api opts.merge({ :method => 'sendMessage' })
     end
